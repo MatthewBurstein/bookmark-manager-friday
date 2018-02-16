@@ -13,10 +13,10 @@
       <%= link.title %>
     </a>
     <form action=/delete method="post">
-      <button type="submit" name="delete" value="<%= link.id %>">
+      <button class="delete" type="submit" name="delete" value="<%= link.id %>">
         Delete
       </button>
-
+      <a id=<%= link.id %> href="/update?id=<%= link.id %>">Update</a> 
     </form>
   </li>
   <% end %>

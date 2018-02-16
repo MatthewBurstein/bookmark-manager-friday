@@ -58,4 +58,17 @@ describe Link do
     end
   end
 
+  describe '.update' do
+    let(:options) { { id: '2', title: 'Reddit', url: 'http://www.reddit.com' } }
+    it 'updates title in the database' do
+      Link.update(options)
+      links = Link.all.map(&:title)
+      expect(links).to include options[:title]
+    end
+    it 'updates url in the database' do
+      Link.update(options)
+      links = Link.all.map(&:url)
+      expect(links).to include options[:url]
+    end
+  end
 end

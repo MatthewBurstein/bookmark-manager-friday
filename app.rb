@@ -15,6 +15,7 @@ class BookmarkManager < Sinatra::Base
 
   post '/add_link' do
     link, title = params[:new_link], params[:title]
+    p 'title is empty' if params[:title] = ''
     flash[:invalid_uri] = 'URI not valid' unless Link.add_new_link(link, title)
     @links = Link.all
     redirect to '/'
@@ -25,6 +26,17 @@ class BookmarkManager < Sinatra::Base
     redirect to '/'
   end
 
+  get '/update' do
+    @id = params[:id]
+    p @id
+    erb :update
+  end
+
+  post '/update_link' do
+    p params
+    Link.update(params)
+    redirect to '/'
+  end
 
   run! if app_file == $0
 end

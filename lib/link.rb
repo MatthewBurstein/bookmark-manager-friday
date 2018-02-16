@@ -29,6 +29,14 @@ class Link
     DatabaseConnection.query("DELETE FROM links WHERE id='#{link_id.to_i}';")
   end
 
+  # def self.update(id, url, title)
+  #   DatabaseConnection.query()
+  # end
+
+  def self.update(options)
+    DatabaseConnection.query("UPDATE links SET url = '#{options[:url]}', title = '#{options[:title]}' WHERE id = '#{options[:id]}'")
+  end
+
   private
 
   def self.validate(uri)
