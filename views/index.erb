@@ -4,7 +4,7 @@
   <input type="submit" value="Save link">
 </form>
 
-<%= flash.now[:invalid_uri] %>
+<%= flash[:invalid_uri] %>
 
 <ul>
   <% @links.each do |link| %>
@@ -12,6 +12,12 @@
     <a href="<%= link.url %>">
       <%= link.title %>
     </a>
+    <form action=/delete method="post">
+      <button type="submit" name="delete" value="<%= link.id %>">
+        Delete
+      </button>
+
+    </form>
   </li>
   <% end %>
 </ul>

@@ -48,4 +48,14 @@ describe Link do
     end
   end
 
+  describe '.delete' do
+    it 'deletes link from database' do
+      test_link = 'http://www.google.com'
+      test_link_id = '2'
+      Link.delete(test_link_id)
+      links = Link.all.map(&:url)
+      expect(links).not_to include test_link
+    end
+  end
+
 end

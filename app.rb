@@ -15,9 +15,14 @@ class BookmarkManager < Sinatra::Base
 
   post '/add_link' do
     link, title = params[:new_link], params[:title]
-    flash.now[:invalid_uri] = 'URI not valid' unless Link.add_new_link(link, title)
+    flash[:invalid_uri] = 'URI not valid' unless Link.add_new_link(link, title)
     @links = Link.all
-    erb :index
+    redirect to '/'
+  end
+
+  post '/delete' do
+    Link.delete(params[:delete])
+    redirect to '/'
   end
 
 

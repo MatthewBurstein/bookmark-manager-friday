@@ -23,6 +23,12 @@ class Link
     DatabaseConnection.query("INSERT INTO links(url, title) VALUES('#{new_link}', '#{title}');")
   end
 
+  def self.delete(link_id)
+    p "inside the delete method"
+    p "link_id i s#{link_id}"
+    DatabaseConnection.query("DELETE FROM links WHERE id='#{link_id.to_i}';")
+  end
+
   private
 
   def self.validate(uri)
