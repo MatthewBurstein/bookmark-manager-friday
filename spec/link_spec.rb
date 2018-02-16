@@ -65,10 +65,20 @@ describe Link do
       links = Link.all.map(&:title)
       expect(links).to include options[:title]
     end
+
     it 'updates url in the database' do
       Link.update(options)
       links = Link.all.map(&:url)
       expect(links).to include options[:url]
+    end
+  end
+
+  describe '.find' do
+    it 'returns a link object constructed from the db row with the given id' do
+      id = '2'
+      url = 'http://www.google.com'
+      link = Link.find(id)
+      expect(link.url).to eq url
     end
   end
 end

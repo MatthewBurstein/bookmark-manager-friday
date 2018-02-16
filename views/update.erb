@@ -7,9 +7,15 @@
   <body>
     <h1>You're in the update page</h1>
     <form action="/update_link" method="post">
-      <input type="text" name="url" size="30" value="<%= @link.name %>">
-      <input type="text" name="title" size="15" placeholder="title">
-      <input type="hidden" name="id" value="<%= @id %>">
+      <label for="url" name="url">
+        url
+        <input type="text" name="url" size="30" value="<%= @link.url %>">
+      </label>
+      <label for="title">
+        title
+        <input type="text" name="title" size="15" value="<%= @link.title %>">
+      </label>
+      <input type="hidden" name="id" value="<%= @link.id %>">
       <input type="submit" name="Submit" value="Update link">
     </form>
   </body>

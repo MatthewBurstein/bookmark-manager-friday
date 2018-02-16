@@ -29,6 +29,12 @@ class Link
     DatabaseConnection.query("DELETE FROM links WHERE id='#{link_id.to_i}';")
   end
 
+  def self.find(link_id)
+    result = DatabaseConnection.query("SELECT * FROM links WHERE id='#{link_id}'")
+    db_entry =  result.[](0)
+    Link.new(db_entry["id"], db_entry["url"], db_entry["title"])
+  end
+
   # def self.update(id, url, title)
   #   DatabaseConnection.query()
   # end
